@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* The plugin is now compatible with and requires Chartist v1 API
+* The plugin provides an ESM, CSJ and UMD version
+* The "class" option accepts a single class name or an array of class names
+* Sources were converted to TypeScript
+* Replace deprecated properties "page{X,Y}Offset" with scroll{X,Y}
+* Dropped support for "currency" and "currencyFormatCallback" options (use "tooltipFnc" instead)
+
 ## [1.0.0] - 2nd January 2023
 
 Versions 1.0.0 and above of this plugin only work with Chartist versions of 1.0.0 and above.

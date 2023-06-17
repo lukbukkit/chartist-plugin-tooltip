@@ -1,7 +1,7 @@
 {
   "name": "chartist-plugin-tooltips-updated",
   "description": "Point Labels Plugin for Chartist.js",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "LukBukkit & Markus Padourek",
   "homepage": "https://github.com/LukBukkit/chartist-plugin-tooltip",
   "repository": {
@@ -16,14 +16,32 @@
     "plugin",
     "tooltip"
   ],
+  "engines": {
+    "node": ">=14"
+  },
   "files": [
     "dist",
     "LICENSE",
     "package.json",
     "README.md"
   ],
-  "main": "dist/chartist-plugin-tooltip.js",
-  "browser": "dist/chartist-plugin-tooltip.js",
+  "main": "./src/scripts/chartist-plugin-tooltip.ts",
+  "types": "./dist/chartist-plugin-tooltip.d.ts",
+  "style": "./dist/chartist-plugin-tooltip.css",
+  "browser": "./dist/chartist-plugin-tooltip.js",
+  "unpkg": "./dist/chartist-plugin-tooltip.umd.js",
+  "publishConfig": {
+    "main": "./dist/chartist-plugin-tooltip.cjs",
+    "module": "./dist/chartist-plugin-tooltip.js",
+    "exports": {
+      ".": {
+        "require": "./dist/chartist-plugin-tooltip.cjs",
+        "import": "./dist/chartist-plugin-tooltip.js"
+      },
+      "./dist/*": "./dist/*"
+    },
+    "directory": "package"
+  },
   "licenses": [
     {
       "type": "MIT",
@@ -34,37 +52,44 @@
     "chartist": "^1.0.0"
   },
   "devDependencies": {
-    "grunt": "^1.6.1",
-    "grunt-contrib-clean": "^2.0.1",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-jasmine": "^4.0.0",
-    "grunt-contrib-jshint": "^3.2.0",
-    "grunt-contrib-uglify": "^5.2.2",
-    "grunt-sass": "^3.1.0",
-    "grunt-umd": "^3.0.0",
-    "jasmine-fixture": "^2.0.0",
-    "jshint-stylish": "^2.2.1",
-    "load-grunt-config": "^4.0.1",
+    "@rollup/plugin-typescript": "^10.0.1",
+    "@rollup/plugin-terser": "0.1.0",
+    "@types/jest": "^29.2.4",
+    "@typescript-eslint/eslint-plugin": "^5.46.1",
+    "@typescript-eslint/parser": "^5.46.1",
+    "copyfiles": "^2.4.1",
+    "del": "^7.0.0",
+    "del-cli": "^5.0.0",
+    "eslint": "^8.29.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-jest": "^27.1.6",
+    "eslint-plugin-jest-dom": "^4.0.3",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-tsdoc": "^0.2.17",
+    "jest": "^29.3.1",
+    "jest-environment-jsdom": "^29.3.1",
+    "minify": "^9.1.0",
+    "prettier": "^2.8.1",
+    "rollup": "^3.7.5",
     "sass": "^1.62.1",
-    "time-grunt": "^2.0.0"
-  },
-  "resolutions": {
-    "scss-tokenizer": "^0.4.3"
+    "stylelint": "^14.16.0",
+    "stylelint-config-standard-scss": "^6.1.0",
+    "stylelint-scss": "^4.3.0",
+    "terser": "^5.16.1",
+    "ts-jest": "^29.0.3",
+    "typescript": "^4.9.4"
   },
   "scripts": {
-    "build": "grunt build",
-    "test": "grunt test",
-    "prepare": "grunt build",
-    "preversion": "grunt test",
-    "version": "grunt build && git add -A ."
-  },
-  "config": {
-    "banner": "/* chartist-plugin-tooltip <%= pkg.version %>\n * Copyright © <%= year %> Markus Padourek\n * Free to use under the WTFPL license.\n * http://www.wtfpl.net/\n */\n",
-    "src": "src",
-    "dist": "dist",
-    "tmp": ".tmp",
-    "test": "test",
-    "src_name": "chartist-plugin-tooltip"
+    "clean": "del ./dist ./.tmp",
+    "build": "yarn clean && yarn build:styles && yarn build:scripts",
+    "build:scripts": "rollup -c",
+    "build:styles": "sass --style compressed src/styles:dist",
+    "format": "prettier --write 'src/**/*.ts' 'test/**/*.ts'",
+    "lint": "yarn lint:scripts && yarn lint:styles",
+    "lint:scripts": "eslint 'src/**/*.ts' 'test/**/*.ts'",
+    "lint:styles": "stylelint 'src/styles/**/*.scss'",
+    "prepublishOnly": "yarn test && yarn build",
+    "test": "jest -c jest.config.json"
   },
   "directories": {
     "test": "test"
