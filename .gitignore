@@ -39,3 +39,6 @@ node_modules
 
 # Jasmine
 _SpecRunner.html
+
+# macOS
+.DS_Store
