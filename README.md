@@ -1,5 +1,4 @@
 # Tooltips for Chartist
-[![Build Status](https://travis-ci.com/LukBukkit/chartist-plugin-tooltip.svg?branch=master)](https://travis-ci.com/LukBukkit/chartist-plugin-tooltip)
 [![npm](https://img.shields.io/npm/v/chartist-plugin-tooltips-updated.svg)](https://www.npmjs.com/package/chartist-plugin-tooltips-updated)
 
 This plugin provides quick and easy tooltips for your [Chartist](https://github.com/chartist-js/chartist#readme) charts.
