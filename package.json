@@ -49,7 +49,8 @@
     "time-grunt": "^2.0.0"
   },
   "resolutions": {
-    "scss-tokenizer": "^0.4.3"
+    "scss-tokenizer": "^0.4.3",
+    "ws": "^8.17.1"
   },
   "scripts": {
     "build": "grunt build",
