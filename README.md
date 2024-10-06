@@ -4,6 +4,9 @@
 This plugin provides quick and easy tooltips for your [Chartist](https://github.com/chartist-js/chartist#readme) charts.
 It's published on npm as [chartist-plugin-tooltips-updated](https://www.npmjs.com/package/chartist-plugin-tooltips-updated).
 
+⚠️ This package is deprecated and will no longer receive updates, including bug fixes or new features.
+If you require tooltips, I recommend switching to another charting library.
+
 ## Configuration Options
 
 The following options can be configured when the plugin is loaded.
