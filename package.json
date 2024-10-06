@@ -45,7 +45,7 @@
     "jasmine-fixture": "^2.0.0",
     "jshint-stylish": "^2.2.1",
     "load-grunt-config": "^4.0.1",
-    "sass": "^1.62.1",
+    "sass": "^1.79.4",
     "time-grunt": "^2.0.0"
   },
   "resolutions": {
